@@ -9,8 +9,9 @@ class Linkedlist(object):
 
     def traverseList(self):
         actualNode = self.head
+        print("The List is given as follows:")
         while actualNode is not None:
-            print(" ".format(actualNode.data))
+            print("{}".format(actualNode.data))
             actualNode = actualNode.nextNode
 
 
@@ -29,7 +30,7 @@ class Linkedlist(object):
             self.head = newNode
 
     def size(self):
-        return self.counter
+        print("The size of linked list is: {}".format(self.counter))
 
     def insertEnd(self, data):
         if self.head is None:
@@ -54,39 +55,3 @@ class Linkedlist(object):
                 self.head = self.head.nextNode
             else:
                 self.head.remove(data, self.head)
-#
-# class SingleList(object):
-#
-#     head = None
-#     tail = None
-#
-#     def show(self):
-#         print("Showing list data:")
-#         current_node = self.head
-#         while current_node is not None:
-#             print (current_node.data, " -> ",)
-#             current_node = current_node.next
-#         print (None)
-#
-#     def append(self, data):
-#         node = Node(data, None)
-#         if self.head is None:
-#             self.head = self.tail = node
-#         else:
-#             self.tail.next = node
-#         self.tail = node
-#
-#     def remove(self, node_value):
-#         current_node = self.head
-#         previous_node = None
-#         while current_node is not None:
-#             if current_node.data == node_value:
-#                 # if this is the first node (head)
-#                 if previous_node is not None:
-#                     previous_node.next = current_node.next
-#                 else:
-#                     self.head = current_node.next
-#
-#             # needed for the next iteration
-#             previous_node = current_node
-#             current_node = current_node.next

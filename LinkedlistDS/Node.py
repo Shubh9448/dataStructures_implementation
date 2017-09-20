@@ -12,8 +12,3 @@ class Node(object):
         else:
             if self.nextNode is not  None:
                 self.nextNode.remove(data, self)
-# class Node(object):
-#
-#     def __init__(self, data, next):
-#         self.data = data
-#         self.next = next
