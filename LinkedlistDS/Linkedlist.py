@@ -15,7 +15,6 @@ class Linkedlist(object):
             actualNode = actualNode.nextNode
 
 
-
     def insertStart(self,data):
 
         self.counter += 1

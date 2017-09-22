@@ -2,7 +2,7 @@ class Node(object):
     def __init__(self, data):
         self.data = data
         self.nextNode = None
-        self.prevNode = None
+        self.prevNode =None
 
     def remove(self, data, previousNode):
         if self.data == data:
