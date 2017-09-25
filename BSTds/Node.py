@@ -67,5 +67,25 @@ class Node(object):
         if self.rightChild is not None:
             self.rightChild.traverseInOrder()
 
+    def traversePreOrder(self):
+        print(self.data)
+
+        if self.leftChild is not None:
+            self.leftChild.traversePreOrder()
+
+        if self.rightChild is not None:
+            self.rightChild.traversePreOrder()
+
+    def traversePostOrder(self):
+        if self.leftChild is not None:
+            self.leftChild.traversePostOrder()
+
+        if self.rightChild is not None:
+            self.rightChild.traversePostOrder()
+
+        print(self.data)
+
+
+
 
 

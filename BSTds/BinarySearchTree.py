@@ -28,3 +28,15 @@ class BST(object):
     def traverseInOrder(self):
         if self.rootNode:
             self.rootNode.traverseInOrder()
+
+    def traversePreOrder(self):
+        if self.rootNode:
+            self.rootNode.traversePreOrder()
+
+
+    def traversePostOrder(self):
+        if self.rootNode:
+            self.rootNode.traversePreOrder()
+
+
+
