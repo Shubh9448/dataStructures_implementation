@@ -84,6 +84,8 @@ class BalancedTree(object):
         self.setBalance(b)
         return b
 
+    def traverseInOrder(self):
+        self.rootNode.traverseInOrder()
 
 
     def setBalance(self, node):
