@@ -50,7 +50,7 @@ class Node(object):
         if self.leftChild is None:
             return self.data
         else:
-            self.leftChild.getMin()
+            return self.leftChild.getMin()
 
     def getMax(self):
         if self.rightChild is None:
