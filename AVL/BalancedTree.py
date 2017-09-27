@@ -97,3 +97,5 @@ class BalancedTree(object):
         else:
             return 1+ max(self.height(node.leftChild), self.height(node.rightChild))
 
+
+
