@@ -9,6 +9,7 @@ def is_fibonacci(lst):
 
 
 
+
 b = [0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610]
 c = is_fibonacci(b)
 if c == False:

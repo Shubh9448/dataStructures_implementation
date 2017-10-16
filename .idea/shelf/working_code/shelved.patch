@@ -1,0 +1,101 @@
+Index: BSTds/app.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- BSTds/app.py	(revision )
++++ BSTds/app.py	(revision )
+@@ -0,0 +1,32 @@
++from BSTds.BinarySearchTree import BST
++
++bst = BST()
++bst.insert(12)
++bst.insert(10)
++bst.insert(9)
++bst.insert(1)
++bst.insert(18)
++bst.insert(25)
++bst.insert(24)
++bst.insert(27)
++bst.insert(29)
++bst.insert(33)
++bst.insert(40)
++bst.insert(3)
++
++print("Inorder")
++bst.traverseInOrder()
++
++print("*" * 40)
++print("PostOrder")
++
++bst.traversePostOrder()
++print("*" * 40)
++print("PreOrder")
++
++bst.traversePreOrder()
++
++print("*" * 40)
++
++print("the max node is :{}".format(bst.getMax()))
++print("the min node is :{}".format(bst.getMin()))
+\ No newline at end of file
+Index: BSTds/BinarySearchTree.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from BSTds.Node import Node\nclass BST(object):\n    def __init__(self):\n        self.rootNode = None\n\n    def insert(self, data):\n        if not self.rootNode:\n            self.rootNode = Node(data)\n        else:\n            self.rootNode.insert(data)\n\n    def remove(self, dataToRemove):\n        if self.rootNode:\n            if self.rootNode.data ==  dataToRemove:\n                tempNode = Node(None)\n                tempNode.leftChild = self.rootNode\n                self.rootNode.remove(dataToRemove, None)\n\n\n    def getMax(self):\n        if self.rootNode:\n            return self.rootNode.getMax()\n\n    def getMin(self):\n        if self.rootNode:\n            return self.rootNode.getMin()\n\n    def traverseInOrder(self):\n        if self.rootNode:\n            self.rootNode.traverseInOrder()\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- BSTds/BinarySearchTree.py	(revision 3f565a705c1c09c3330e94fe7c3786406b57db24)
++++ BSTds/BinarySearchTree.py	(revision )
+@@ -28,3 +28,15 @@
+     def traverseInOrder(self):
+         if self.rootNode:
+             self.rootNode.traverseInOrder()
++
++    def traversePreOrder(self):
++        if self.rootNode:
++            self.rootNode.traversePreOrder()
++
++
++    def traversePostOrder(self):
++        if self.rootNode:
++            self.rootNode.traversePostOrder()
++
++
++
+Index: BSTds/Node.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Node(object):\n\n    def __init__(self,data):\n        self.data = data\n        self.leftChild = None\n        self.rightChild = None\n\n    def insert(self,data):\n        if data < self.data:\n            if not self.leftChild:\n                self.leftChild = Node(data)\n\n            else:\n                self.leftChild.insert(data)\n        else:\n            if not self.rightChild:\n                self.rightChild = Node(data)\n\n            else:\n                self.rightChild.insert(data)\n\n    def remove(self, data, parentNode):\n        if data < self.data:\n            if self.leftChild is not None:\n                self.leftChild.remove(data, self)\n        elif data > self.data:\n            self.rightChild.remove(data, self)\n        else:\n            if self.leftChild is not None and self.rightChild is not None:\n                self.data = self.rightChild.getMin()\n                self.rightChild.remove(self.data, self)\n            elif parentNode.leftChild == self:\n                if self.leftChild is not None:\n                    tempNode = self.leftChild\n                else:\n                    tempNode = self.rightChild\n\n                parentNode = self.rightChild\n\n            elif parentNode.rightChild == self:\n                if self.leftChild is not None:\n                    tempNode = self.leftChild\n                else:\n                    tempNode = self.rightChild\n                parentNode.rightChild = tempNode\n\n\n\n    def getMin(self):\n        if self.leftChild is None:\n            return self.data\n        else:\n            self.leftChild.getMin()\n\n    def getMax(self):\n        if self.rightChild is None:\n            return self.data\n        else:\n            return self.rightChild.getMax()\n\n    def traverseInOrder(self):\n        if self.leftChild is not None:\n            self.leftChild.traverseInOrder()\n\n        print(self.data)\n\n        if self.rightChild is not None:\n            self.rightChild.traverseInOrder()\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- BSTds/Node.py	(revision 3f565a705c1c09c3330e94fe7c3786406b57db24)
++++ BSTds/Node.py	(revision )
+@@ -67,5 +67,25 @@
+         if self.rightChild is not None:
+             self.rightChild.traverseInOrder()
+ 
++    def traversePreOrder(self):
++        print(self.data)
++
++        if self.leftChild is not None:
++            self.leftChild.traversePreOrder()
++
++        if self.rightChild is not None:
++            self.rightChild.traversePreOrder()
++
++    def traversePostOrder(self):
++        if self.leftChild is not None:
++            self.leftChild.traversePostOrder()
++
++        if self.rightChild is not None:
++            self.rightChild.traversePostOrder()
++
++        print(self.data)
++
++
++
+ 
+ 
